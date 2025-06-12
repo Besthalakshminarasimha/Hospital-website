@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLN Hospital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<a href="https://stock.adobe.com/search?k=letter+b+logo" data-iframely-url="//iframely.net/LKYktB2l"></a>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #0056b3;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #003f7f;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1588776814546-ec09f1c5f7e4') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    .section {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #007bff;
+    }
+
+    .more-btn,
+    .list-btn {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.75rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .more-btn:hover,
+    .list-btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0056b3;
+      color: white;
+    }
+
+    .specialty-info {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: white;
+      border-left: 5px solid #007bff;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dept-list {
+      columns: 2;
+      padding: 1rem;
+      background: white;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dept-list ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .dept-list li::before {
+      content: '•';
+      color: #007bff;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+      .dept-list {
+        columns: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>BLN Hospital</h1>
+    <p>Your health, our priority</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+    <a href="#find" onclick="loadDoctors()">Find a Doctor</a>
+
+  </nav>
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #0056b3;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #003f7f;
+    }
+
+
+    #doctorContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .doctor-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+    }
+
+    .doctor-card img {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+    }
+
+    .doctor-card h3 {
+      margin: 10px 0 5px;
+    }
+
+    .tags {
+      font-size: 14px;
+      background: #f0f0f0;
+      padding: 8px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .doctor-card button {
+      padding: 10px;
+      background-color: #f3d8d8;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .doctor-card button:hover {
+      background-color: #e8b4b4;
+    }
+  </style>
+</head>
+<body>
+
+ 
+  <!-- Section Anchor -->
+  <div id="find"></div>
+
+  <!-- Doctor Card Container -->
+  <div id="doctorContainer"></div>
+
+  <script>
+    function loadDoctors() {
+      const data = [
+        { name: "Dr. Anoop Misra", role: "EXECUTIVE CHAIRMAN FORTIS C DOC | Fortis C-Doc", specialization: "Diabetology/Endocrinology", experience: "40 Years", fees: "₹ 2800" },
+        { name: "Dr. (Col) Manjinder Sandhu", role: "PRINCIPAL DIRECTOR CARDIOLOGY | Fortis Manesar", specialization: "Cardiac Sciences | Interventional Cardiology", experience: "35 Years", fees: "₹ 2000" },
+        { name: "Dr. Ajay Kaul", role: "CHAIRMAN CARDIAC SCIENCE | Fortis Noida", specialization: "Heart & Lung Transplant | Vascular Surgery", experience: "38 Years", fees: "₹ 2500" },
+        { name: "Dr. Ajay Kumar Kriplani", role: "PRINCIPAL DIRECTOR MIS SURGERY | Fortis Gurgaon", specialization: "Laparoscopic Surgery | Bariatric Surgery", experience: "36 Years", fees: "₹ 2300" },
+        { name: "Dr. Ajit Singh Narula", role: "DIRECTOR NEPHROLOGY | Fortis Okhla", specialization: "Nephrology | Kidney Transplant", experience: "40 Years", fees: "₹ 1800" },
+        { name: "Dr. Sandeep Attawar", role: "DIRECTOR CARDIOTHORACIC SURGERY | Fortis Chennai", specialization: "Heart & Lung Transplant | CTVS", experience: "34 Years", fees: "₹ 2200" },
+        { name: "Dr. Ramesh Sarin", role: "SENIOR ONCOLOGIST | Fortis Vasant Kunj", specialization: "Breast Cancer | Surgical Oncology", experience: "42 Years", fees: "₹ 2000" },
+        { name: "Dr. Pradeep Chowbey", role: "DIRECTOR MINIMAL ACCESS SURGERY | Fortis Vasant Kunj", specialization: "Bariatric Surgery | Gastro Surgery", experience: "39 Years", fees: "₹ 2600" },
+        { name: "Dr. Arvind Kumar", role: "LUNG SURGERY SPECIALIST | Fortis GK II", specialization: "Chest Surgery | Thoracic Oncology", experience: "37 Years", fees: "₹ 2400" },
+        { name: "Dr. Rajiv Yadav", role: "DIRECTOR URO-ONCOLOGY | Fortis Gurgaon", specialization: "Kidney Cancer | Prostate Cancer", experience: "29 Years", fees: "₹ 2100" },
+        { name: "Dr. Rahul Bhargava", role: "BMT SPECIALIST | Fortis Gurgaon", specialization: "Bone Marrow Transplant | Hematology", experience: "25 Years", fees: "₹ 2200" },
+        { name: "Dr. Neelam Mohan", role: "PEDIATRIC HEPATOLOGIST | Fortis Gurgaon", specialization: "Pediatric Liver | Gastroenterology", experience: "28 Years", fees: "₹ 2000" }
+      ];
+
+      const container = document.getElementById("doctorContainer");
+      container.innerHTML = "";
+
+      data.forEach(doctor => {
+        const card = document.createElement("div");
+        card.className = "doctor-card";
+        card.innerHTML = `
+          <img src="https://cdn-icons-png.flaticon.com/512/387/387561.png" alt="Doctor">
+          <h3>${doctor.name}</h3>
+          <div>${doctor.role}</div>
+          <div class="tags">${doctor.specialization}</div>
+          <div class="info-row"><span>🧑‍⚕️ ${doctor.experience}</span><span>${doctor.fees}</span></div>
+          <button>Book An Appointment</button>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+
+</body>
+</html>
+</body>
+
+  <section class="hero">
+    <h1>Committed to Your Wellbeing</h1>
+    <div style="position: relative; width: 100%; height: 0; padding-top: 100.0000%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https://www.canva.com/design/DAGqJNVhVSs/gV14REUw0lEutmfJGZ2jYQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+</div>
+  </section>
+
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="card">
+        <h3>24/7 Emergency</h3>
+        <p>Always ready to respond to medical emergencies with expert care.</p>
+      </div>
+      <div class="card">
+        <h3>Outpatient Consultations</h3>
+        <p>General checkups with physicians or specialists </p>
+      </div>
+      <div class="card">
+        <h3>Laboratory & Diagnostic Services</h3>
+        <p>Blood tests, urine analysis, pathology reports.Imaging: X-ray, MRI, CT scan, ultrasound</p>
+      </div>
+      <div class="card">
+        <h3>Pharmacy Services</h3>
+        <p>In-house pharmacy for quick medicine access.24/7 prescription and over-the-counter medication availability</p>
+      </div>
+    </div>
+    <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #333;
+    }
+
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .tabs button.active {
+      background-color: #0056b3;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .dept-list1 {
+      columns: 2;
+      padding: 1rem;
+      background: white;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dept-list1 ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .dept-list1 li::before {
+      content: '•';
+      color: #007bff;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+  </style>
+</head>
+<body>
+    <header>
+    <h1>Medical Specializations</h1>
+  </header>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search specializations..." onkeyup="filterCards()">
+  </div>
+
+  <div class="tabs">
+    <button class="tab-button active" onclick="filterCategory('all')">All</button>
+    <button class="tab-button" onclick="filterCategory('clinical')">Clinical</button>
+    <button class="tab-button" onclick="filterCategory('surgical')">Surgical</button>
+    <button class="tab-button" onclick="filterCategory('diagnostic')">Diagnostic</button>
+  </div>
+
+  <div class="card-container" id="cardContainer">
+    <div class="card clinical">
+      <h3>Cardiology</h3>
+      <p>Deals with disorders of the heart and blood vessels.</p>
+    </div>
+    <div class="card clinical">
+      <h3>Neurology</h3>
+      <p>Specializes in brain and nervous system disorders.</p>
+    </div>
+    <div class="card clinical">
+      <h3>Nephrology</h3>
+      <p>Focuses on kidney function and diseases.</p>
+    </div>
+    <div class="card surgical">
+      <h3>Orthopedic Surgery</h3>
+      <p>Treats conditions related to bones and joints.</p>
+    </div>
+    <div class="card surgical">
+      <h3>Cardiothoracic Surgery</h3>
+      <p>Surgical treatment of heart and lungs.</p>
+    </div>
+    <div class="card surgical">
+      <h3>Neurosurgery</h3>
+      <p>Operates on the brain and spinal cord.</p>
+    </div>
+    <div class="card diagnostic">
+      <h3>Pathology</h3>
+      <p>Studies disease through lab testing of tissues and fluids.</p>
+    </div>
+    <div class="card diagnostic">
+      <h3>Radiology</h3>
+      <p>Uses imaging techniques like X-rays and MRIs for diagnosis.</p>
+    </div>
+    <div class="card diagnostic">
+      <h3>Microbiology</h3>
+      <p>Focuses on disease-causing microorganisms.</p>
+    </div>
+  </div>
+
+  <script>
+    function filterCards() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+      });
+    }
+
+    function filterCategory(category) {
+      const buttons = document.querySelectorAll(".tab-button");
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      event.target.classList.add("active");
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.style.display = "block";
+        } else {
+          card.style.display = card.classList.contains(category) ? "block" : "none";
+        }
+      });
+    }
+  </script>
+</body>
+    <div style="text-align:center; margin-top: 1.5rem;">
+      <label for="specialties" style="font-weight: bold; margin-bottom: 0.5rem; display: block;">Explore More Specialties:</label>
+      <select id="specialties" class="more-btn" onchange="showSpecialtyInfo(this.value)">
+        <option value="">Select a specialist Doctor</option>
+        <option value="Allergy & Immunology">Allergy & Immunology</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Oncology">Oncology</option>
+        <option value="Radiology">Radiology</option>
+        <option value="Urology">Urology</option>
+        <option value="All">All Departments</option>
+      </select>
+    </div>
+    <div id="specialty-info" class="specialty-info" style="display:none;"></div>
+    <a href="#all-departments" class="list-btn">List of All Clinical Departments</a>
+    <a href="#all-departments1" class="list-btn">List of all Surgical Specializations</a>
+  </section>
+
+  <section class="section" id="all-departments">
+    <h2>The Clinical Specialist Departments we serve</h2>
+    <div class="dept-list">
+      <ul>
+        <li>Cardiology – Heart and blood vessels</li>
+        <li>Neurology – Brain and nervous system</li>
+        <li>Nephrology – Kidneys</li>
+        <li>Pulmonology – Lungs and respiratory system</li>
+        <li>Gastroenterology – Digestive system</li>
+        <li>Endocrinology – Hormones and glands (e.g., diabetes, thyroid)</li>
+        <li>Hematology – Blood and blood-related diseases</li>
+        <li>Oncology – Cancer</li>
+        <li>Rheumatology – Joints, muscles, autoimmune diseases</li>
+        <li>Infectious Disease – Bacterial, viral, and fungal infections</li>
+        <li>Dermatology – Skin, hair, and nails</li>
+        <li>Allergy & Immunology – Allergies, asthma, immune system disorders</li>
+        <li>Geriatrics – Health care of elderly people</li>
+        <li>Pediatrics – Health care of infants, children, and adolescents</li>
+        <li>Obstetrics & Gynecology (OB/GYN) – Pregnancy, childbirth, and female reproductive system</li>
+        <li>Psychiatry – Mental health</li>
+        <li>Urology – Urinary system and male reproductive organs</li>
+        <li>Ophthalmology – Eyes and vision</li>
+        <li>Otolaryngology (ENT) – Ear, nose, and throat</li>
+        <li>Orthopedics – Bones, joints, and musculoskeletal system</li>
+        <li>General/Internal Medicine – Broad adult medical care, chronic diseases</li>
+        <li>Family Medicine – General health care for all ages</li>
+        <li>Emergency Medicine – Acute, life-threatening conditions</li>
+        <li>Anesthesiology – Pain relief and anesthesia during surgery</li>
+        <li>Radiology – Imaging (X-rays, CT, MRI, etc.)</li>
+        <li>Pathology – Diagnosing diseases via lab tests and autopsies</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="all-departments1">
+    <h2>The Surgical Specilization Departments we serve</h2>
+    <div class="dept-list1">
+        <ul>
+  <li>Cardiothoracic Surgery – Heart and chest surgeries</li>
+  <li>Neurosurgery – Brain and spinal cord surgeries</li>
+  <li>Orthopedic Surgery – Bone and joint surgeries</li>
+  <li>Plastic Surgery – Reconstructive and cosmetic surgeries</li>
+  <li>Urologic Surgery – Surgeries on urinary tract</li>
+  <li>Vascular Surgery – Blood vessel surgeries</li>
+  <li>Pediatric Surgery – Surgeries on children</li>
+  <li>Colorectal Surgery – Rectum, colon, and anus surgeries</li>
+  <li>Ophthalmic Surgery – Eye surgeries</li>
+  <li>ENT Surgery – Ear, nose, throat surgeries</li>
+</ul>
+
+    </section>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>Welcome to BLN Hospitals, where compassionate care meets cutting-edge medicine. We are a multi-specialty healthcare institution committed to providing exceptional medical services under one roof. Our mission is to deliver holistic, affordable, and accessible healthcare that caters to individuals and families across all walks of life. At BLN, we combine world-class infrastructure, modern diagnostic tools, and a dedicated team of medical professionals who strive for excellence in patient care, safety, and satisfaction.
+
+With departments spanning various specialties—ranging from internal medicine, pediatrics, and dermatology to advanced surgical units like cardiothoracic, orthopedic, and neurosurgery—we ensure comprehensive diagnosis, treatment, and follow-up for every patient. Whether it’s preventive care, critical emergencies, or life-saving surgeries, BLN Hospitals stands as a symbol of trust, transparency, and quality.
+
+Our patient-first approach is strengthened by 24/7 emergency support, advanced ICUs, a fully equipped operation theatre complex, and a compassionate nursing team. We believe healthcare should be a seamless experience, and we work tirelessly to make every patient feel heard, cared for, and healed. At BLN Hospitals, your well-being isn’t just a goal—it’s our purpose.</p>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@BLNlhospital.com | Phone: +91 7569373499</p>
+    <p>Address: 123 Health Street, Wellness City, India</p>
+  </section>
+
+  <footer class="foot">
+    <p>&copy; 2025 BLN Hospital. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function showSpecialtyInfo(specialty) {
+      const allDepartments = document.querySelector("#all-departments ul").innerHTML;
+      const allDepartments1 = document.querySelector("#all-departments1 ul").innerHTML;
+      const info = {
+        "Allergy & Immunology": "<strong>Dr. Asha Mehta, MD</strong><br>Expert in allergy shots, asthma care, and immune system disorders. Personalized plans for every patient.",
+        "Dermatology": "<strong>Dr. Rohan Verma, MD</strong><br>Skin care specialist with 10+ years experience in acne, eczema, laser therapy, and cosmetic dermatology.",
+        "Neurology": "<strong>Dr. Priya Natarajan, DM</strong><br>Specialist in epilepsy, stroke rehabilitation, Parkinson’s, and neurodegenerative diseases. State-of-the-art diagnostic tools available.",
+        "Oncology": "<strong>Dr. Sameer Khan, MS, DM</strong><br>Comprehensive cancer care with chemotherapy, radiation, immunotherapy, and psychological support.",
+        "Radiology": "<strong>Dr. Kavitha Rao, MD</strong><br>Leader in diagnostic imaging: MRI, CT, X-ray, and Ultrasound. Fast and accurate reporting.",
+        "Urology": "<strong>Dr. Anil Reddy, MCh</strong><br>Top expert in kidney stones, prostate care, and urinary disorders. Minimally invasive procedures available.",
+        "All": `<strong>All Departments</strong><ul style="padding-left: 1.25rem">${allDepartments}${allDepartments1}</ul>`
+      };
+
+      const display = document.getElementById("specialty-info");
+      if (specialty && info[specialty]) {
+        display.style.display = "block";
+        display.innerHTML = info[specialty];
+      } else {
+        display.style.display = "none";
+        display.innerHTML = "";
+      }
+    }
+  </script>
+<head>
+  <title>CareWell Hospital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: #007bff;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #0056b3;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: #003f7f;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1588776814546-ec09f1c5f7e4') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+
+    .section {
+      padding: 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .card h3 {
+      color: #007bff;
+    }
+
+    .more-btn,
+    .list-btn {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.75rem 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      text-align: center;
+      width: fit-content;
+    }
+
+    .more-btn:hover,
+    .list-btn:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0056b3;
+      color: white;
+    }
+
+    .specialty-info {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: white;
+      border-left: 5px solid #007bff;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dept-list {
+      columns: 2;
+      padding: 1rem;
+      background: white;
+      margin-top: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dept-list ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .dept-list li::before {
+      content: '•';
+      color: #007bff;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
+      .dept-list {
+        columns: 1;
+      }
+    }
+
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      font-size: 14px;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    #chatbot-header {
+      background-color: #007bff;
+      color: white;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    #chatbot-header img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    #chatbot-messages {
+      max-height: 200px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+    }
+
+    #chatbot-input input {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      outline: none;
+    }
+
+    #chatbot-input button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Your content here -->
+
+  <div id="chatbot">
+    <div id="chatbot-header">
+      <img src="https://i.ibb.co/3M4p4c5/ai-anime-avatar.gif" alt="AI Anime">
+      <strong>HealthBot</strong>
+    </div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input">
+      <input type="text" id="user-input" placeholder="Ask about medical info...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    const messages = document.getElementById("chatbot-messages");
+
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage("You", text);
+      input.value = "";
+
+      setTimeout(() => {
+        addMessage("HealthBot", getResponse(text));
+      }, 500);
+    }
+
+    function addMessage(sender, text) {
+      const msg = document.createElement("div");
+      msg.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      messages.appendChild(msg);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function getResponse(input) {
+      input = input.toLowerCase();
+      if (input.includes("fever")) return "Fever is a common symptom caused by infection or inflammation. Rest and hydration are key.";
+      if (input.includes("headache")) return "Headaches can result from stress, dehydration, or lack of sleep. Try to relax and hydrate.";
+      if (input.includes("diabetes")) return "Diabetes is a chronic condition related to insulin production. Regular monitoring and diet are essential.";
+      return "Sorry, I can only provide basic medical information. Please consult a doctor for detailed guidance.";
+    }
+  </script>
+</body>
+</body>
+
+<form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+    <div class="valid-feedback">
+      Looks good!
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend">@</span>
+      <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <label for="validationCustom03" class="form-label">City</label>
+    <input type="text" class="form-control" id="validationCustom03" required>
+    <div class="invalid-feedback">
+      Please provide a valid city.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom04" class="form-label">State</label>
+    <select class="form-select" id="validationCustom04" required>
+      <option selected disabled value="">Choose...</option>
+      <option>...</option>
+    </select>
+    <div class="invalid-feedback">
+      Please select a valid state.
+    </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationCustom05" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="validationCustom05" required>
+    <div class="invalid-feedback">
+      Please provide a valid zip.
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+</form>
+
+
+
+
+
