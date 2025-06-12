@@ -22,7 +22,7 @@ bash
 Run
 Copy code
 git clone https://github.com/yourusername/bln-hospital.git
-Navigate to the project directory:
+Navigate to the project directory:cd bln-hospital
 
 bash
 Run
